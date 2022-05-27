@@ -1,1 +1,6 @@
+local function printblue(msg)
+game:GetService('TestService'):Message(msg)
+end
+
+
 
