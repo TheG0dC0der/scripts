@@ -3,5 +3,34 @@ game:GetService('TestService'):Message(msg)
 end
 
 printblue("test")
+--gui setup------------------------------------------------------------------
+local hackgui = Instance.new("Frame")
+hackgui.Name = "hackgui"
+hackgui.Size = UDim2.new(0.1, 0, 0.3, 0)
+hackgui.Position = UDim2.new(0.9, 0, 0.7, 0)
+hackgui.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 
+local TextLabel = Instance.new("TextLabel")
+TextLabel.Size = UDim2.new(1, 0, 0.05, 0)
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.FontSize = Enum.FontSize.Size14
+TextLabel.TextSize = 14
+TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.Text = "player roles"
+TextLabel.TextWrapped = true
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.TextWrap = true
+TextLabel.TextScaled = true
+TextLabel.Parent = hackgui
 
+local plyrlist = Instance.new("ScrollingFrame")
+plyrlist.Name = "plyrlist"
+plyrlist.Size = UDim2.new(1, 0, 0.95, 0)
+plyrlist.Position = UDim2.new(0, 0, 0.05, 0)
+plyrlist.Active = true
+plyrlist.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+plyrlist.ScrollBarImageColor3 = Color3.fromRGB(0, 0, 0)
+plyrlist.Parent = hackgui
+
+hackgui.Parent = game.Players.LocalPlayer.PlayerGui
+------------------------------------------------------------------------------
