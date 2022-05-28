@@ -1,5 +1,5 @@
 local function printblue(msg)
-game:GetService('TestService'):Message(msg)
+	game:GetService('TestService'):Message(msg)
 end
 
 printblue("test")
@@ -13,14 +13,14 @@ b.Size=UDim2.new(0.1,0,0.3,0)
 b.Position=UDim2.new(0.9,0,0.7,0)
 b.BackgroundColor3=Color3.fromRGB(10,10,10)
 b.Parent=a
-local c=Instance.new"TextLabel"
+local c=Instance.new"TextButton"
 c.Size=UDim2.new(1,0,0.05,0)
 c.BackgroundColor3=Color3.fromRGB(25,25,25)
 c.FontSize=5
 c.TextStrokeTransparency=0
 c.TextSize=14
 c.TextColor3=Color3.fromRGB(255,255,255)
-c.Text="player roles"
+c.Text="Rclick after game start"
 c.TextWrapped=true
 c.Font=3
 c.TextWrap=true
@@ -36,13 +36,30 @@ d.ScrollBarImageColor3=Color3.fromRGB(0,0,0)
 d.Parent=b
 a.Parent=game.Players.LocalPlayer.PlayerGui
 local currentpos = 0
+local rolelist = {}
 for i,v in pairs(game.Players:GetChildren()) do
-	local e = Instance.new("TextLabel")
-	e.Size=UDim2.new(1,0,0.0666,0)
-	e.Position=UDim2.new(0,0,currentpos,0)
-	e.TextScaled = true
-	currentpos=currentpos+0.066
-	e.Text=v.PlayerData.DisplayName.Value.."'s role is "..v.PlayerData.Role.Value
-	e.Parent=d
+	rolelist[v] = v.PlayerData.Role.Value
 end
 ------------------------------------------------------------------------------
+local debounce = true
+c.MouseButton2Click:Connect(function()
+	if	debounce then
+		c.Text = "Role List"
+		for i,v in pairs(game.Players:GetChildren()) do
+			local e = Instance.new("TextButton")
+			e.Size=UDim2.new(1,0,0.0666,0)
+			e.Position=UDim2.new(0,0,currentpos,0)
+			e.TextScaled = true
+			currentpos=currentpos+0.066
+			e.Text=v.PlayerData.Number.Value.."'s role is "..rolelist[v]
+			e.Parent=d
+			e.MouseButton2Down:Connect(function()
+				e.Text=v.Name
+			end)
+			e.MouseButton2Up:Connect(function()
+				e.Text=v.PlayerData.Number.Value.."'s role is "..rolelist[v]
+			end)
+			end
+		debounce = false
+	end
+end)
