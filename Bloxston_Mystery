@@ -60,7 +60,6 @@ end
 ------------------------------------------------------------------------------
 local debounce = true
 local buttonlist = {}
-local ddf
 c.MouseButton2Click:Connect(function()
 	if	debounce then
 		if game.Workspace.Game.Town:findFirstChild(game.Players.LocalPlayer.Name) ~= nil then
@@ -78,14 +77,10 @@ c.MouseButton2Click:Connect(function()
 				e.MouseButton1Click:Connect(function()
 					if uis:IsKeyDown(Enum.KeyCode.Period) then
 						e:Destroy()
-						table.remove(buttonlist, table.find(buttonlist, v))
-						currentpos = 0
 						for i,v in pairs(buttonlist) do
-							v:Destroy()
-							ddf = v
-							ddf.Parent=d
-							ddf.Position=UDim2.new(0,0,currentpos,0)
-							currentpos=currentpos+0.066
+							if	v.Position.Y.Scale < e.Position.Y.Scale then
+								v.Position.Y.Scale = v.Position.Y.Scale - 0.0666
+							end
 						end
 					else
 						local RootPart = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
