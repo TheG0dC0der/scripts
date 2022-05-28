@@ -34,7 +34,7 @@ d.Active=true
 d.BackgroundColor3=Color3.fromRGB(25,25,25)
 d.ScrollBarImageColor3=Color3.fromRGB(0,0,0)
 d.Parent=b
-a.Parent=game:GetService"StarterGui"
+a.Parent=game.Players.LocalPlayer.PlayerGui
 local currentpos = 0
 for i,v in pairs(game.Players:GetChildren()) do
 	local e = Instance.new("TextLabel")
