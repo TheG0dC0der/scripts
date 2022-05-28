@@ -1,4 +1,4 @@
-local function printblue(msg)
+\local function printblue(msg)
 	game:GetService('TestService'):Message(msg)
 end
 local uis = game:GetService("UserInputService")
@@ -49,7 +49,7 @@ local currentpos = 0
 local rolelist = {}
 local onetime = false
 for i,v in pairs(game.Players:GetChildren()) do
-	if v.PlayerData:FindFirstChild("Role") ~= nil then
+	if v.PlayerData:FingFirstChild("Role") ~= nil then
 		rolelist[v] = v.PlayerData.Role.Value
 	else
 		printblue("please wait to inject script untill mayor is talking")
@@ -60,10 +60,11 @@ end
 ------------------------------------------------------------------------------
 local debounce = true
 local buttonlist = {}
+local ddf
 c.MouseButton2Click:Connect(function()
 	if	debounce then
 		if game.Workspace.Game.Town:findFirstChild(game.Players.LocalPlayer.Name) ~= nil then
-				c.Text = "Role List"
+			c.Text = "Role List"
 			for i,v in pairs(game.Players:GetChildren()) do
 				local e = Instance.new("TextButton")
 				e.Size=UDim2.new(1,0,0.0666,0)
@@ -72,18 +73,18 @@ c.MouseButton2Click:Connect(function()
 				currentpos=currentpos+0.066
 				e.Text=v.PlayerData.Number.Value.."'s role is "..rolelist[v]
 				e.Parent=d
-				buttonlist[i] = e
+				buttonlist[v] = e
 				---------------click function----------------------------------
 				e.MouseButton1Click:Connect(function()
 					if uis:IsKeyDown(Enum.KeyCode.Period) then
 						e:Destroy()
-						table.remove(buttonlist, i)
+						table.remove(buttonlist, table.find(buttonlist, v))
 						currentpos = 0
 						for i,v in pairs(buttonlist) do
 							v:Destroy()
-							e = v
-							e.Parent=d
-							e.Position=UDim2.new(0,0,currentpos,0)
+							ddf = v
+							ddf.Parent=d
+							ddf.Position=UDim2.new(0,0,currentpos,0)
 							currentpos=currentpos+0.066
 						end
 					else
@@ -91,7 +92,7 @@ c.MouseButton2Click:Connect(function()
 						RootPart.CFrame = v.Character.PrimaryPart.CFrame
 					end
 				end)
-				
+
 			end
 			printblue("finished flling list")
 			debounce = false
