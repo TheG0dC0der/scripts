@@ -4,12 +4,16 @@ end
 
 printblue("test")
 --gui setup------------------------------------------------------------------
+local mainhack = Instance.new("ScreenGui")
+mainhack.Name = "mainhack"
+mainhack.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
 local hackgui = Instance.new("Frame")
 hackgui.Name = "hackgui"
 hackgui.Size = UDim2.new(0.1, 0, 0.3, 0)
 hackgui.Position = UDim2.new(0.9, 0, 0.7, 0)
 hackgui.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-hackgui.Visible = true
+hackgui.Parent = mainhack
 
 local TextLabel = Instance.new("TextLabel")
 TextLabel.Size = UDim2.new(1, 0, 0.05, 0)
@@ -23,7 +27,6 @@ TextLabel.Font = Enum.Font.SourceSans
 TextLabel.TextWrap = true
 TextLabel.TextScaled = true
 TextLabel.Parent = hackgui
-TextLabel.Visible = true
 
 local plyrlist = Instance.new("ScrollingFrame")
 plyrlist.Name = "plyrlist"
@@ -33,10 +36,6 @@ plyrlist.Active = true
 plyrlist.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 plyrlist.ScrollBarImageColor3 = Color3.fromRGB(0, 0, 0)
 plyrlist.Parent = hackgui
-plyrlist.Visible = true
 
-hackgui.Parent = game.Players.LocalPlayer.PlayerGui
-hackgui.Active = true
-plyrlist.Active = true
-TextLabel.Active = true
+mainhack.Parent = game.Players.LocalPlayer.PlayerGui
 ------------------------------------------------------------------------------
