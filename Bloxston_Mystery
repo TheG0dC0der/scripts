@@ -40,8 +40,9 @@ for i,v in pairs(game.Players:GetChildren()) do
 	local e = Instance.new("TextLabel")
 	e.Size=UDim2.new(1,0,0.0666,0)
 	e.Position=UDim2.new(0,0,currentpos,0)
+	e.TextScaled = true
 	currentpos=currentpos+0.066
-	e.Text=v.PlayerData.DisplayName.Value..v.PlayerData.Role.Value
+	e.Text=v.PlayerData.DisplayName.Value.."'s role is "..v.PlayerData.Role.Value
 	e.Parent=d
 end
 ------------------------------------------------------------------------------
