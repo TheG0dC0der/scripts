@@ -36,4 +36,7 @@ plyrlist.Parent = hackgui
 plyrlist.Visible = true
 
 hackgui.Parent = game.Players.LocalPlayer.PlayerGui
+hackgui.Active = true
+plyrlist.Active = true
+TextLabel.Active = true
 ------------------------------------------------------------------------------
