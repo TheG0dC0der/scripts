@@ -1,8 +1,10 @@
+print("Hello world!")
 local function printblue(msg)
 	game:GetService('TestService'):Message(msg)
 end
+local uis = game:GetService("UserInputService")
 
-printblue("test")
+printblue("thank you for using my script!! -TheGodCoder#7023")
 --gui setup------------------------------------------------------------------
 local a=Instance.new"ScreenGui"
 a.Name="mainhack"
@@ -59,7 +61,14 @@ c.MouseButton2Click:Connect(function()
 			e.MouseButton2Up:Connect(function()
 				e.Text=v.PlayerData.Number.Value.."'s role is "..rolelist[v]
 			end)
-			end
+			e.MouseButton1Click:Connect(function()
+				if uis:IsKeyDown(Enum.KeyCode.Period) then
+					e:Destroy()
+				else
+					game.Players.LocalPlayer.Character.PrimaryPart.CFrame = v.Character.PrimaryPart.CFrame
+				end
+			end)
+		end
 		debounce = false
 	end
 end)
