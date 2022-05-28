@@ -77,7 +77,7 @@ c.MouseButton2Click:Connect(function()
 				e.MouseButton1Click:Connect(function()
 					if uis:IsKeyDown(Enum.KeyCode.Period) then
 						e:Destroy()
-						table.remove(buttonlist, v)
+						table.remove(v, buttonlist)
 						currentpos = 0
 						for i,v in pairs(buttonlist) do
 							v:Destroy()
