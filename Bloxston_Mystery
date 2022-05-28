@@ -1,4 +1,3 @@
-print("Hello world!")
 local function printblue(msg)
 	game:GetService('TestService'):Message(msg)
 end
@@ -46,29 +45,35 @@ end
 local debounce = true
 c.MouseButton2Click:Connect(function()
 	if	debounce then
-		c.Text = "Role List"
-		for i,v in pairs(game.Players:GetChildren()) do
-			local e = Instance.new("TextButton")
-			e.Size=UDim2.new(1,0,0.0666,0)
-			e.Position=UDim2.new(0,0,currentpos,0)
-			e.TextScaled = true
-			currentpos=currentpos+0.066
-			e.Text=v.PlayerData.Number.Value.."'s role is "..rolelist[v]
-			e.Parent=d
-			e.MouseButton2Down:Connect(function()
-				e.Text=v.Name
-			end)
-			e.MouseButton2Up:Connect(function()
+		if game.Workspace.Game.Town:findFirstChild(game.Players.LocalPlayer.Name) ~= nil then
+				c.Text = "Role List"
+			for i,v in pairs(game.Players:GetChildren()) do
+				local e = Instance.new("TextButton")
+				e.Size=UDim2.new(1,0,0.0666,0)
+				e.Position=UDim2.new(0,0,currentpos,0)
+				e.TextScaled = true
+				currentpos=currentpos+0.066
 				e.Text=v.PlayerData.Number.Value.."'s role is "..rolelist[v]
-			end)
-			e.MouseButton1Click:Connect(function()
-				if uis:IsKeyDown(Enum.KeyCode.Period) then
-					e:Destroy()
-				else
-					game.Players.LocalPlayer.Character.PrimaryPart.CFrame = v.Character.PrimaryPart.CFrame
-				end
-			end)
+				e.Parent=d
+				e.MouseButton2Down:Connect(function()
+					e.Text=v.Name
+				end)
+				e.MouseButton2Up:Connect(function()
+					e.Text=v.PlayerData.Number.Value.."'s role is "..rolelist[v]
+				end)
+				e.MouseButton1Click:Connect(function()
+					if uis:IsKeyDown(Enum.KeyCode.Period) then
+						e:Destroy()
+					else
+						local RootPart = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+						RootPart.CFrame = v.Character.PrimaryPart.CFrame
+					end
+				end)
+			end
+			printblue("finished flling list")
+			debounce = false
+		else
+			c.Text = "wait till game starts!"
 		end
-		debounce = false
 	end
 end)
