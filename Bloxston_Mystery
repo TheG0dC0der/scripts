@@ -4,6 +4,15 @@ end
 local uis = game:GetService("UserInputService")
 
 printblue("thank you for using my script!! -TheGodCoder#7023")
+--[[To add:
+show name at night
+silent aim
+move names up list apon deleate-Y
+test if mayor is talking-Y
+
+
+
+]]--
 --gui setup------------------------------------------------------------------
 local a=Instance.new"ScreenGui"
 a.Name="mainhack"
@@ -38,11 +47,19 @@ d.Parent=b
 a.Parent=game.Players.LocalPlayer.PlayerGui
 local currentpos = 0
 local rolelist = {}
+local onetime = false
 for i,v in pairs(game.Players:GetChildren()) do
-	rolelist[v] = v.PlayerData.Role.Value
+	if v.PlayerData:FingFirstChild("Role") ~= nil then
+		rolelist[v] = v.PlayerData.Role.Value
+	else
+		printblue("please wait to inject script untill mayor is talking")
+		a:Destroy()
+		script:Destroy()
+	end
 end
 ------------------------------------------------------------------------------
 local debounce = true
+local buttonlist = {}
 c.MouseButton2Click:Connect(function()
 	if	debounce then
 		if game.Workspace.Game.Town:findFirstChild(game.Players.LocalPlayer.Name) ~= nil then
@@ -55,20 +72,26 @@ c.MouseButton2Click:Connect(function()
 				currentpos=currentpos+0.066
 				e.Text=v.PlayerData.Number.Value.."'s role is "..rolelist[v]
 				e.Parent=d
-				e.MouseButton2Down:Connect(function()
-					e.Text=v.Name
-				end)
-				e.MouseButton2Up:Connect(function()
-					e.Text=v.PlayerData.Number.Value.."'s role is "..rolelist[v]
-				end)
+				buttonlist[v] = e
+				---------------click function----------------------------------
 				e.MouseButton1Click:Connect(function()
 					if uis:IsKeyDown(Enum.KeyCode.Period) then
 						e:Destroy()
+						table.remove(buttonlist, v)
+						currentpos = 0
+						for i,v in pairs(buttonlist) do
+							v:Destroy()
+							e = v
+							e.Parent=d
+							e.Position=UDim2.new(0,0,currentpos,0)
+							currentpos=currentpos+0.066
+						end
 					else
 						local RootPart = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
 						RootPart.CFrame = v.Character.PrimaryPart.CFrame
 					end
 				end)
+				
 			end
 			printblue("finished flling list")
 			debounce = false
