@@ -49,7 +49,7 @@ local currentpos = 0
 local rolelist = {}
 local onetime = false
 for i,v in pairs(game.Players:GetChildren()) do
-	if v.PlayerData:FingFirstChild("Role") ~= nil then
+	if v.PlayerData:FindFirstChild("Role").Value ~= nil then
 		rolelist[v] = v.PlayerData.Role.Value
 	else
 		printblue("please wait to inject script untill mayor is talking")
@@ -86,7 +86,6 @@ c.MouseButton2Click:Connect(function()
 							ddf.Parent=d
 							ddf.Position=UDim2.new(0,0,currentpos,0)
 							currentpos=currentpos+0.066
-							printblue("replace seccus?")
 						end
 					else
 						local RootPart = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
