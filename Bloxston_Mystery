@@ -72,7 +72,7 @@ c.MouseButton2Click:Connect(function()
 				currentpos=currentpos+0.066
 				e.Text=v.PlayerData.Number.Value.."'s role is "..rolelist[v]
 				e.Parent=d
-				buttonlist[v] = e
+				buttonlist[i] = e
 				---------------click function----------------------------------
 				e.MouseButton1Click:Connect(function()
 					if uis:IsKeyDown(Enum.KeyCode.Period) then
