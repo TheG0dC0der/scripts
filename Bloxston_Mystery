@@ -96,5 +96,3 @@ c.MouseButton2Click:Connect(function()
 		end
 	end
 end)
-
-uis.
