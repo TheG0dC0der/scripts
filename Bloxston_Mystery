@@ -78,7 +78,7 @@ c.MouseButton2Click:Connect(function()
 					if uis:IsKeyDown(Enum.KeyCode.Period) then
 						e:Destroy()
 						for i,v in pairs(buttonlist) do
-							if	v.Position.Y.Scale < e.Position.Y.Scale then
+							if	v.Position.Y.Scale > e.Position.Y.Scale then
 								v.Position = v.Position - UDim2.new(0,0,0.0666,0)
 							end
 						end
