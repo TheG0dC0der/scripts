@@ -1,4 +1,4 @@
-=local function printblue(msg)
+local function printblue(msg)
 	game:GetService('TestService'):Message(msg)
 end
 local uis = game:GetService("UserInputService")
