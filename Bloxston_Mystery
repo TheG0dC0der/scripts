@@ -9,7 +9,9 @@ show name at night-n
 silent aim----
 move names up list apon deleate-y
 test if mayor is talking-y
-
+make a auto will with every role-n
+highlight number mention in chat-n
+controll gui-- as in show controlls
 
 
 ]]--
@@ -99,3 +101,5 @@ c.MouseButton2Click:Connect(function()
 		end
 	end
 end)
+
+-- playergui.countergui.mainholder.currentday
