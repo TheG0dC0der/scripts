@@ -74,7 +74,7 @@ c.MouseButton2Click:Connect(function()
 				e.Parent=d
 				buttonlist[v] = e
 				---------------click function----------------------------------
-				e.MouseButton1Click:Connect(function()
+				e.MouseButton2Click:Connect(function()
 					if uis:IsKeyDown(Enum.KeyCode.Period) then
 						e:Destroy()
 						for i,v in pairs(buttonlist) do
@@ -82,12 +82,13 @@ c.MouseButton2Click:Connect(function()
 								v.Position = v.Position - UDim2.new(0,0,0.0666,0)
 							end
 						end
+						printblue(e.Text.." has been destroid. player list moved up")
 					else
 						local RootPart = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
 						RootPart.CFrame = v.Character.PrimaryPart.CFrame
 					end
 				end)
-				e.MouseButton2Click:Connect(function()
+				e.MouseButton1Click:Connect(function()
 					-- extra option
 				end)
 			end
