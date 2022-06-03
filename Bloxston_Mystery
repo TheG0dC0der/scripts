@@ -74,7 +74,7 @@ c.MouseButton2Click:Connect(function()
 				e.Position=UDim2.new(0,0,currentpos,0)
 				e.TextScaled = true
 				currentpos=currentpos+0.066
-				e.Text=v.PlayerData.Number.Value.."'s role is "..rolelist[v]
+				e.Text= tostring(v.PlayerData.Number.Value).."'s role is "..rolelist[v]
 				e.Parent=d
 				buttonlist[v] = e
 				---------------click function----------------------------------
